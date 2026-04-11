@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Oluwaseyi Toye — AI Multimedia Producer & Creative Technologist</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --bg: #080a0e;
+  --bg2: #0d1017;
+  --bg3: #12161f;
+  --card: #141820;
+  --card2: #181e28;
+  --border: #1e2838;
+  --amber: #e8a842;
+  --amber-dim: #b07a20;
+  --teal: #2dd4bf;
+  --teal-dim: #0d8a7a;
+  --blue: #4a90d9;
+  --text: #eaecf2;
+  --text-dim: #8494aa;
+  --text-faint: #3d4f66;
+  --font-display: 'Cormorant Garamond', serif;
+  --font-body: 'DM Sans', sans-serif;
+  --font-mono: 'DM Mono', monospace;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { background: var(--bg); color: var(--text); font-family: var(--font-body); font-weight: 300; line-height: 1.7; overflow-x: hidden; }
+body::before { content: ''; position: fixed; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E"); pointer-events: none; z-index: 0; opacity: 0.5; }
+
+/* NAV */
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1.1rem 4rem; background: rgba(8,10,14,0.9); backdrop-filter: blur(24px); border-bottom: 1px solid var(--border); }
+.nav-logo { font-family: var(--font-display); font-size: 1.25rem; font-weight: 600; color: var(--text); letter-spacing: 0.02em; }
+.nav-logo em { font-style: normal; color: var(--amber); }
+.nav-links { display: flex; gap: 2.2rem; list-style: none; }
+.nav-links a { font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-dim); text-decoration: none; transition: color 0.2s; }
+.nav-links a:hover { color: var(--amber); }
+
+/* HERO */
+.hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; position: relative; padding: 8rem 4rem 6rem; overflow: hidden; }
+.hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 15% 50%, rgba(232,168,66,0.07) 0%, transparent 60%), radial-gradient(ellipse 60% 80% at 85% 25%, rgba(45,212,191,0.05) 0%, transparent 60%), radial-gradient(ellipse 40% 40% at 55% 85%, rgba(74,144,217,0.04) 0%, transparent 50%); }
+.hero-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(232,168,66,0.035) 1px, transparent 1px), linear-gradient(90deg, rgba(232,168,66,0.035) 1px, transparent 1px); background-size: 64px 64px; mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 20%, transparent 80%); animation: gridPulse 9s ease-in-out infinite; }
+@keyframes gridPulse { 0%, 100% { opacity: 0.4; } 50% { opacity: 0.9; } }
+.orb { position: absolute; border-radius: 50%; filter: blur(90px); pointer-events: none; }
+.orb-1 { width: 420px; height: 420px; background: rgba(232,168,66,0.07); top: 8%; left: 3%; animation: orbFloat 14s ease-in-out infinite; }
+.orb-2 { width: 360px; height: 360px; background: rgba(45,212,191,0.055); top: 25%; right: 8%; animation: orbFloat 11s ease-in-out infinite; animation-delay: -4s; }
+.orb-3 { width: 260px; height: 260px; background: rgba(74,144,217,0.045); bottom: 18%; left: 28%; animation: orbFloat 16s ease-in-out infinite; animation-delay: -8s; }
+@keyframes orbFloat { 0%, 100% { transform: translate(0,0) scale(1); } 33% { transform: translate(28px,-22px) scale(1.04); } 66% { transform: translate(-18px,26px) scale(0.96); } }
+.hero-content { position: relative; z-index: 2; max-width: 920px; text-align: center; }
+.hero-tag { display: inline-flex; align-items: center; gap: 0.7rem; font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--amber); border: 1px solid rgba(232,168,66,0.28); padding: 0.45rem 1.1rem; border-radius: 2px; margin-bottom: 2.2rem; animation: fadeUp 0.8s ease both; }
+.hero-tag::before { content: ''; width: 7px; height: 7px; background: var(--amber); border-radius: 50%; animation: pulse 2.2s infinite; }
+@keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.3; transform: scale(0.75); } }
+.hero-name { font-family: var(--font-display); font-size: clamp(3.8rem, 8.5vw, 7.5rem); font-weight: 300; line-height: 1.02; letter-spacing: -0.02em; color: var(--text); margin-bottom: 0.6rem; animation: fadeUp 0.8s 0.15s ease both; }
+.hero-name em { font-style: normal; color: var(--amber); }
+.hero-title { font-family: var(--font-display); font-size: clamp(1.1rem, 2.2vw, 1.65rem); font-weight: 300; color: var(--text-dim); letter-spacing: 0.04em; margin-bottom: 2rem; animation: fadeUp 0.8s 0.3s ease both; }
+.hero-title span { color: var(--teal); }
+.hero-bio { font-size: 0.98rem; color: var(--text-dim); max-width: 640px; margin: 0 auto 3rem; line-height: 1.85; animation: fadeUp 0.8s 0.45s ease both; }
+.hero-ctas { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; animation: fadeUp 0.8s 0.6s ease both; }
+.btn-primary { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.9rem 2.2rem; background: var(--amber); color: #080a0e; font-family: var(--font-mono); font-size: 0.72rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; border-radius: 2px; transition: all 0.25s; }
+.btn-primary:hover { background: #f0b84a; transform: translateY(-2px); box-shadow: 0 10px 28px rgba(232,168,66,0.32); }
+.btn-secondary { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.9rem 2.2rem; background: transparent; color: var(--teal); font-family: var(--font-mono); font-size: 0.72rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; border: 1px solid rgba(45,212,191,0.38); border-radius: 2px; transition: all 0.25s; }
+.btn-secondary:hover { background: rgba(45,212,191,0.08); border-color: var(--teal); transform: translateY(-2px); }
+
+/* TOOLKIT STRIP */
+.toolkit-strip { border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); background: var(--bg2); padding: 1.1rem 0; overflow: hidden; }
+.toolkit-scroll { display: flex; gap: 2.8rem; animation: scrollLeft 35s linear infinite; white-space: nowrap; }
+.toolkit-scroll:hover { animation-play-state: paused; }
+@keyframes scrollLeft { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+.toolkit-item { font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-faint); flex-shrink: 0; transition: color 0.2s; cursor: default; }
+.toolkit-item:hover { color: var(--amber); }
+.toolkit-dot { color: var(--amber); opacity: 0.5; }
+
+/* SECTIONS */
+.section-wrap { padding: 6rem 4rem; max-width: 1200px; margin: 0 auto; }
+.section-label { font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--amber); margin-bottom: 0.9rem; display: flex; align-items: center; gap: 1rem; }
+.section-label::after { content: ''; flex: 1; max-width: 55px; height: 1px; background: var(--amber); opacity: 0.35; }
+.section-title { font-family: var(--font-display); font-size: clamp(2.2rem, 4.5vw, 3.5rem); font-weight: 300; line-height: 1.08; margin-bottom: 1rem; letter-spacing: -0.01em; }
+.section-title em { font-style: normal; color: var(--amber); }
+.section-sub { color: var(--text-dim); font-size: 0.96rem; max-width: 560px; margin-bottom: 3.5rem; line-height: 1.85; }
+.section-divider { width: 100%; height: 1px; background: var(--border); max-width: 1200px; margin: 0 auto; }
+
+/* ABOUT */
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+.about-text p { color: var(--text-dim); margin-bottom: 1.2rem; line-height: 1.95; font-size: 0.94rem; }
+.about-text p strong { color: var(--text); font-weight: 500; }
+.about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin-top: 2rem; }
+.stat-card { background: var(--card); border: 1px solid var(--border); padding: 1.4rem; border-radius: 3px; position: relative; overflow: hidden; transition: border-color 0.3s; }
+.stat-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--amber), transparent); }
+.stat-card:hover { border-color: rgba(232,168,66,0.28); }
+.stat-number { font-family: var(--font-display); font-size: 2.6rem; font-weight: 600; color: var(--amber); line-height: 1; margin-bottom: 0.4rem; }
+.stat-label { font-size: 0.74rem; color: var(--text-dim); font-family: var(--font-mono); letter-spacing: 0.05em; }
+.toolkit-grid { display: flex; flex-direction: column; gap: 1rem; }
+.toolkit-cat { background: var(--card); border: 1px solid var(--border); border-radius: 3px; padding: 1.1rem 1.4rem; transition: border-color 0.3s; }
+.toolkit-cat:hover { border-color: rgba(45,212,191,0.22); }
+.toolkit-cat-label { font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--teal); margin-bottom: 0.65rem; }
+.toolkit-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+.tag { font-family: var(--font-mono); font-size: 0.62rem; padding: 0.22rem 0.55rem; background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 2px; color: var(--text-dim); letter-spacing: 0.04em; transition: all 0.2s; cursor: default; }
+.tag:hover { background: rgba(232,168,66,0.07); border-color: rgba(232,168,66,0.28); color: var(--amber); }
+
+/* VIDEO SECTION */
+.video-subsection { margin-bottom: 4rem; }
+.video-subsection-title { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--teal); margin-bottom: 1.5rem; padding-bottom: 0.7rem; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 0.8rem; }
+.video-subsection-title::before { content: ''; width: 6px; height: 6px; background: var(--teal); border-radius: 50%; }
+.video-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+.video-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+.video-card { background: var(--card); border: 1px solid var(--border); border-radius: 3px; overflow: hidden; transition: all 0.3s; }
+.video-card:hover { border-color: rgba(232,168,66,0.28); transform: translateY(-3px); box-shadow: 0 14px 44px rgba(0,0,0,0.45); }
+.video-embed { position: relative; width: 100%; padding-bottom: 56.25%; background: var(--bg3); }
+.video-embed iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+.video-embed-vertical { position: relative; width: 100%; padding-bottom: 177.77%; background: var(--bg3); }
+.video-embed-vertical iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+.video-info { padding: 1.2rem; }
+.video-info h4 { font-family: var(--font-display); font-size: 1rem; font-weight: 600; margin-bottom: 0.4rem; color: var(--text); line-height: 1.3; }
+.video-info p { font-size: 0.78rem; color: var(--text-dim); line-height: 1.65; margin-bottom: 0.8rem; }
+.video-tools { display: flex; flex-wrap: wrap; gap: 0.3rem; }
+.tool-tag { font-family: var(--font-mono); font-size: 0.58rem; padding: 0.18rem 0.48rem; background: rgba(232,168,66,0.07); border: 1px solid rgba(232,168,66,0.18); border-radius: 2px; color: var(--amber); letter-spacing: 0.05em; }
+.channel-badge { font-family: var(--font-mono); font-size: 0.58rem; padding: 0.18rem 0.48rem; background: rgba(45,212,191,0.07); border: 1px solid rgba(45,212,191,0.18); border-radius: 2px; color: var(--teal); letter-spacing: 0.05em; margin-bottom: 0.5rem; display: inline-block; }
+
+/* IMAGE GALLERY */
+.gallery-filter { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-bottom: 2.5rem; }
+.filter-btn { font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.45rem 1rem; background: transparent; border: 1px solid var(--border); border-radius: 2px; color: var(--text-dim); cursor: pointer; transition: all 0.2s; }
+.filter-btn:hover, .filter-btn.active { background: rgba(232,168,66,0.1); border-color: rgba(232,168,66,0.4); color: var(--amber); }
+.gallery-grid { columns: 3; gap: 1rem; }
+.gallery-item { break-inside: avoid; margin-bottom: 1rem; border-radius: 3px; overflow: hidden; border: 1px solid var(--border); transition: all 0.3s; cursor: pointer; position: relative; }
+.gallery-item:hover { border-color: rgba(232,168,66,0.3); transform: scale(1.01); box-shadow: 0 8px 32px rgba(0,0,0,0.5); }
+.gallery-item img { width: 100%; display: block; }
+.gallery-overlay { position: absolute; inset: 0; background: rgba(8,10,14,0.85); opacity: 0; transition: opacity 0.3s; display: flex; flex-direction: column; justify-content: flex-end; padding: 1rem; }
+.gallery-item:hover .gallery-overlay { opacity: 1; }
+.gallery-overlay h5 { font-family: var(--font-display); font-size: 0.9rem; font-weight: 600; color: var(--text); margin-bottom: 0.3rem; }
+.gallery-overlay p { font-size: 0.72rem; color: var(--text-dim); line-height: 1.5; }
+.gallery-overlay .cat-tag { font-family: var(--font-mono); font-size: 0.58rem; color: var(--amber); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.4rem; }
+
+/* AUDIO */
+.audio-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+.audio-intro { background: var(--card); border: 1px solid var(--border); border-radius: 3px; padding: 2rem; grid-column: span 2; position: relative; overflow: hidden; }
+.audio-intro::before { content: ''; position: absolute; top: 0; left: 0; bottom: 0; width: 3px; background: linear-gradient(180deg, var(--blue), var(--teal)); }
+.audio-intro p { color: var(--text-dim); font-size: 0.93rem; line-height: 1.9; }
+.audio-card { background: var(--card); border: 1px solid var(--border); border-radius: 3px; padding: 1.8rem; transition: border-color 0.3s; }
+.audio-card:hover { border-color: rgba(74,144,217,0.28); }
+.audio-card h4 { font-family: var(--font-display); font-size: 1.05rem; font-weight: 600; color: var(--text); margin-bottom: 0.4rem; }
+.audio-card p { font-size: 0.78rem; color: var(--text-dim); line-height: 1.65; margin-bottom: 1.2rem; }
+.audio-placeholder { background: var(--bg3); border: 1px dashed rgba(74,144,217,0.25); border-radius: 3px; padding: 1.5rem; text-align: center; margin-bottom: 1rem; }
+.audio-placeholder p { font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.1em; color: var(--blue); opacity: 0.7; }
+.audio-waveform { display: flex; align-items: center; gap: 3px; height: 44px; margin-bottom: 1rem; }
+.wave-bar { flex: 1; background: var(--border); border-radius: 2px; animation: waveAnim 1.8s ease-in-out infinite; }
+.audio-card:hover .wave-bar { background: var(--blue); }
+@keyframes waveAnim { 0%, 100% { transform: scaleY(0.25); } 50% { transform: scaleY(1); } }
+.wave-bar:nth-child(1){height:55%;animation-delay:0s} .wave-bar:nth-child(2){height:78%;animation-delay:.1s} .wave-bar:nth-child(3){height:95%;animation-delay:.2s} .wave-bar:nth-child(4){height:65%;animation-delay:.3s} .wave-bar:nth-child(5){height:88%;animation-delay:.4s} .wave-bar:nth-child(6){height:48%;animation-delay:.5s} .wave-bar:nth-child(7){height:82%;animation-delay:.6s} .wave-bar:nth-child(8){height:60%;animation-delay:.7s} .wave-bar:nth-child(9){height:92%;animation-delay:.8s} .wave-bar:nth-child(10){height:52%;animation-delay:.9s} .wave-bar:nth-child(11){height:74%;animation-delay:1s} .wave-bar:nth-child(12){height:38%;animation-delay:1.1s} .wave-bar:nth-child(13){height:86%;animation-delay:1.2s} .wave-bar:nth-child(14){height:58%;animation-delay:1.3s} .wave-bar:nth-child(15){height:76%;animation-delay:1.4s} .wave-bar:nth-child(16){height:42%;animation-delay:.05s} .wave-bar:nth-child(17){height:90%;animation-delay:.15s} .wave-bar:nth-child(18){height:55%;animation-delay:.25s} .wave-bar:nth-child(19){height:80%;animation-delay:.35s} .wave-bar:nth-child(20){height:64%;animation-delay:.45s}
+.audio-meta { display: flex; flex-wrap: wrap; gap: 0.8rem; }
+.audio-meta-item { font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.08em; color: var(--text-faint); }
+.audio-meta-item span { color: var(--blue); }
+
+/* WRITING */
+.writing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+.writing-card { background: var(--card); border: 1px solid var(--border); border-radius: 3px; padding: 2rem; transition: all 0.3s; position: relative; overflow: hidden; }
+.writing-card::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--amber), transparent); transform: scaleX(0); transition: transform 0.3s; transform-origin: left; }
+.writing-card:hover { border-color: rgba(232,168,66,0.18); }
+.writing-card:hover::after { transform: scaleX(1); }
+.writing-type { font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--amber); margin-bottom: 0.8rem; }
+.writing-card h4 { font-family: var(--font-display); font-size: 1.15rem; font-weight: 600; margin-bottom: 0.6rem; color: var(--text); line-height: 1.3; }
+.writing-card p { font-size: 0.8rem; color: var(--text-dim); line-height: 1.72; margin-bottom: 1.2rem; }
+.placeholder-note { display: inline-flex; align-items: center; gap: 0.5rem; font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.08em; color: var(--teal); background: rgba(45,212,191,0.05); border: 1px dashed rgba(45,212,191,0.22); padding: 0.45rem 0.9rem; border-radius: 2px; margin-top: 1rem; }
+
+/* CONTACT */
+.contact-wrap { background: var(--card); border: 1px solid var(--border); border-radius: 3px; padding: 4.5rem; text-align: center; position: relative; overflow: hidden; }
+.contact-wrap::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--amber), var(--teal), transparent); }
+.contact-wrap h3 { font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3rem); font-weight: 300; margin-bottom: 1rem; }
+.contact-wrap p { color: var(--text-dim); max-width: 500px; margin: 0 auto 2.5rem; line-height: 1.85; font-size: 0.95rem; }
+.contact-links { display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap; margin-bottom: 2.5rem; }
+.contact-link { display: flex; align-items: center; gap: 0.6rem; font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-dim); text-decoration: none; letter-spacing: 0.05em; transition: color 0.2s; }
+.contact-link:hover { color: var(--amber); }
+.contact-link .icon { width: 38px; height: 38px; border-radius: 50%; background: var(--bg3); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 1rem; transition: all 0.2s; }
+.contact-link:hover .icon { background: rgba(232,168,66,0.1); border-color: rgba(232,168,66,0.35); }
+
+/* FOOTER */
+footer { text-align: center; padding: 2rem 4rem; border-top: 1px solid var(--border); font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.1em; color: var(--text-faint); }
+footer span { color: var(--amber); }
+
+/* ANIMATIONS */
+@keyframes fadeUp { from { opacity: 0; transform: translateY(26px); } to { opacity: 1; transform: translateY(0); } }
+.fade-in { opacity: 0; transform: translateY(22px); transition: opacity 0.65s ease, transform 0.65s ease; }
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+
+/* SCROLLBAR */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: var(--amber); }
+
+/* LIGHTBOX */
+.lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.95); z-index: 1000; align-items: center; justify-content: center; padding: 2rem; }
+.lightbox.open { display: flex; }
+.lightbox img { max-width: 90vw; max-height: 90vh; object-fit: contain; border-radius: 3px; }
+.lightbox-close { position: absolute; top: 1.5rem; right: 1.5rem; background: none; border: 1px solid var(--border); color: var(--text); font-size: 1.2rem; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s; }
+.lightbox-close:hover { background: rgba(232,168,66,0.1); border-color: var(--amber); color: var(--amber); }
+
+@media (max-width: 900px) {
+  nav { padding: 1rem 1.5rem; }
+  .nav-links { display: none; }
+  .section-wrap { padding: 4rem 1.5rem; }
+  .hero { padding: 7rem 1.5rem 4rem; }
+  .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .video-grid-2, .video-grid-3 { grid-template-columns: 1fr; }
+  .gallery-grid { columns: 2; }
+  .audio-grid { grid-template-columns: 1fr; }
+  .audio-intro { grid-column: span 1; }
+  .writing-grid { grid-template-columns: 1fr; }
+  .contact-wrap { padding: 2.5rem 1.5rem; }
+}
+@media (max-width: 500px) {
+  .gallery-grid { columns: 1; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Oluwaseyi <em>Toye</em></div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#video">Video</a></li>
+    <li><a href="#images">Images</a></li>
+    <li><a href="#audio">Audio</a></li>
+    <li><a href="#writing">Writing</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+  <div class="hero-content">
+    <div class="hero-tag">Open to Global Projects · Let's Create Something Remarkable</div>
+    <h1 class="hero-name">Oluwaseyi <em>Toye</em></h1>
+    <p class="hero-title">AI Multimedia Producer &amp; <span>Creative Technologist</span></p>
+    <p class="hero-bio">Pushing the boundaries of what's possible with artificial intelligence — from cinematic video generation and editing, voiceover production, voice cloning, and image synthesis to prompt engineering and AI-assisted content creation. I operate across the full AI production stack, wielding 20+ tools to turn ideas into high-quality, compelling multimedia experiences.</p>
+    <div class="hero-ctas">
+      <a href="#video" class="btn-primary">▶ View Work</a>
+      <a href="#contact" class="btn-secondary">✉ Get in Touch</a>
+    </div>
+  </div>
+</section>
+
+<!-- TOOLKIT STRIP -->
+<div class="toolkit-strip">
+  <div class="toolkit-scroll">
+    <span class="toolkit-item">Google Veo 3</span><span class="toolkit-dot"> ◆ </span>
+    <span class="toolkit-item">ElevenLabs</span><span class="toolkit-dot"> ◆ </span>
+    <span class="toolkit-item">Kling</span><span class="toolkit-dot"> ◆ </span>
+    <span class="toolkit-item">Wan 2.6</span><span class="toolkit-dot"> ◆ </span>
+    <span class="toolkit-item">Midjourney v7</span><span class="toolkit-dot"> ◆ </span>
+    <span class="toolkit-item">Hunyuan</span><span class="toolkit-dot"> ◆ </span>
+    <span class="toolkit-item">Google ImageFX</span><span class="toolkit-dot"> ◆ </span>
+    <span class="toolkit-item">Venice AI</span><span class="toolkit-dot"> ◆ </span>
+    <span class="toolkit-item">Chatterbox TTS</span><span class="toolkit-dot"> ◆ </span>
+    <span class="toolkit-item">Kokoro TTS</span><span class="toolkit-dot"> ◆ </span>
+    <span class="toolkit-item">Crick</span><span class="toolkit-dot"> ◆ </span>
+    <span class="toolkit-item">DaVinci Resolve</span><span class="toolkit-dot"> ◆ </span>
+    <span class="toolkit-item">Windsurf</span><span class="toolkit-dot"> ◆ </span>
+    <span class="toolkit-item">NotebookLM</span><span class="toolkit-dot"> ◆ </span>
+    <span class="toolkit-item">Deepseek</span><span class="toolkit-dot"> ◆ </span>
+    <span class="toolkit-item">Suno</span><span class="toolkit-dot"> ◆ </span>
+    <span class="toolkit-item">Grok</span><span class="toolkit-dot"> ◆ </span>
+    <span class="toolkit-item">Meta AI</span><span class="toolkit-dot"> ◆ </span>
+    <span class="toolkit-item">Qwen AI</span><span class="toolkit-dot"> ◆ </span>
+    <span class="toolkit-item">CapCut</span><span class="toolkit-dot"> ◆ </span>
+    <!-- duplicate for loop -->
+    <span class="toolkit-item">Google Veo 3</span><span class="toolkit-dot"> ◆ </span>
+    <span class="toolkit-item">ElevenLabs</span><span class="toolkit-dot"> ◆ </span>
+    <span class="toolkit-item">Kling</span><span class="toolkit-dot"> ◆ </span>
+    <span class="toolkit-item">Wan 2.6</span><span class="toolkit-dot"> ◆ </span>
+    <span class="toolkit-item">Midjourney v7</span><span class="toolkit-dot"> ◆ </span>
+    <span class="toolkit-item">Hunyuan</span><span class="toolkit-dot"> ◆ </span>
+    <span class="toolkit-item">Google ImageFX</span><span class="toolkit-dot"> ◆ </span>
+    <span class="toolkit-item">Venice AI</span><span class="toolkit-dot"> ◆ </span>
+    <span class="toolkit-item">Chatterbox TTS</span><span class="toolkit-dot"> ◆ </span>
+    <span class="toolkit-item">Kokoro TTS</span><span class="toolkit-dot"> ◆ </span>
+    <span class="toolkit-item">Crick</span><span class="toolkit-dot"> ◆ </span>
+    <span class="toolkit-item">DaVinci Resolve</span><span class="toolkit-dot"> ◆ </span>
+    <span class="toolkit-item">Windsurf</span><span class="toolkit-dot"> ◆ </span>
+    <span class="toolkit-item">NotebookLM</span><span class="toolkit-dot"> ◆ </span>
+    <span class="toolkit-item">Deepseek</span><span class="toolkit-dot"> ◆ </span>
+    <span class="toolkit-item">Suno</span><span class="toolkit-dot"> ◆ </span>
+    <span class="toolkit-item">Grok</span><span class="toolkit-dot"> ◆ </span>
+    <span class="toolkit-item">Meta AI</span><span class="toolkit-dot"> ◆ </span>
+    <span class="toolkit-item">Qwen AI</span><span class="toolkit-dot"> ◆ </span>
+    <span class="toolkit-item">CapCut</span><span class="toolkit-dot"> ◆ </span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-wrap">
+    <div class="section-label">01 — About</div>
+    <h2 class="section-title">The mind behind<br/>the <em>production</em></h2>
+    <div class="about-grid fade-in">
+      <div class="about-text">
+        <p>I am an <strong>AI-enabled multimedia producer and creative technologist</strong> with a passion for pushing the boundaries of what artificial intelligence can create. I specialise in harnessing the full power of AI — from cinematic video generation and editing to voiceover production, voice cloning, image synthesis, and AI-assisted content creation.</p>
+        <p>At the core of what I do is <strong>advanced prompt engineering</strong> — understanding not just how to operate AI tools, but how to direct them with precision and creative intent across 20+ platforms to consistently deliver production-ready outputs. My work spans cinematic AI video productions, multilingual voiceover and narration, visual storytelling, and structured content architectures built for clarity, impact, and reuse.</p>
+        <p>I bring together <strong>technical fluency, creative direction, and strategic thinking</strong> — producing content that communicates, engages, and converts for audiences anywhere in the world.</p>
+        <div class="about-stats">
+          <div class="stat-card"><div class="stat-number">20+</div><div class="stat-label">AI Tools in Active Use</div></div>
+          <div class="stat-card"><div class="stat-number">6+</div><div class="stat-label">Years Professional Experience</div></div>
+          <div class="stat-card"><div class="stat-number">317</div><div class="stat-label">Voices Available (via Crick)</div></div>
+          <div class="stat-card"><div class="stat-number">91</div><div class="stat-label">Languages for Audio Production</div></div>
+        </div>
+      </div>
+      <div class="toolkit-grid">
+        <div class="toolkit-cat">
+          <div class="toolkit-cat-label">🎬 AI Video Generation</div>
+          <div class="toolkit-tags"><span class="tag">Veo 3 (Flow)</span><span class="tag">Kling</span><span class="tag">Wan 2.6</span><span class="tag">Grok</span><span class="tag">Meta AI</span><span class="tag">Vheer</span><span class="tag">Hunyuan</span><span class="tag">Qwen AI</span></div>
+        </div>
+        <div class="toolkit-cat">
+          <div class="toolkit-cat-label">🖼️ AI Image Generation</div>
+          <div class="toolkit-tags"><span class="tag">Google ImageFX</span><span class="tag">Venice AI</span><span class="tag">Midjourney v7</span><span class="tag">Crayon</span><span class="tag">Nano Banana</span><span class="tag">PerchanceAI</span><span class="tag">FreeforAI</span><span class="tag">Pixel In</span></div>
+        </div>
+        <div class="toolkit-cat">
+          <div class="toolkit-cat-label">🎙️ AI Audio & TTS</div>
+          <div class="toolkit-tags"><span class="tag">ElevenLabs</span><span class="tag">Crick</span><span class="tag">Chatterbox</span><span class="tag">Kokoro TTS</span><span class="tag">Google TTS</span><span class="tag">Speechma</span><span class="tag">Duck.ai</span><span class="tag">Suno</span><span class="tag">Udio</span></div>
+        </div>
+        <div class="toolkit-cat">
+          <div class="toolkit-cat-label">⚙️ AI Productivity & Research</div>
+          <div class="toolkit-tags"><span class="tag">NotebookLM</span><span class="tag">AI Studio</span><span class="tag">Deepseek</span><span class="tag">Windsurf</span><span class="tag">Le Chat</span><span class="tag">Quillbot</span><span class="tag">Scribble</span></div>
+        </div>
+        <div class="toolkit-cat">
+          <div class="toolkit-cat-label">🎞️ Video Editing & Production</div>
+          <div class="toolkit-tags"><span class="tag">DaVinci Resolve</span><span class="tag">CapCut</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- VIDEO -->
+<section id="video">
+  <div class="section-wrap">
+    <div class="section-label">02 — Video Production</div>
+    <h2 class="section-title">AI Video, UGC &amp; <em>Commercial</em> Production</h2>
+    <p class="section-sub">Cinematic AI storytelling, UGC ads, and brand commercials — built with professional A-roll/B-roll structuring, advanced prompt engineering, and precise narrative direction.</p>
+
+    <!-- YouTube: The Engineered Mind -->
+    <div class="video-subsection fade-in">
+      <div class="video-subsection-title">The Engineered Mind — YouTube Channel</div>
+      <div class="video-grid-2">
+        <div class="video-card">
+          <div class="video-embed">
+            <iframe src="https://www.youtube.com/embed/kqZUjDyAgmw" allowfullscreen loading="lazy"></iframe>
+          </div>
+          <div class="video-info">
+            <span class="channel-badge">The Engineered Mind</span>
+            <h4>This $100 'Saving Habit' Is Costing You $50,000</h4>
+            <p>A fully AI-produced cinematic short exploring the psychology of false economy. Built with AI video generation, voiceover production, and visual metaphors — demonstrating end-to-end narrative storytelling from character development through emotional revelation.</p>
+            <div class="video-tools"><span class="tool-tag">Veo 3</span><span class="tool-tag">ElevenLabs</span><span class="tool-tag">A-Roll/B-Roll</span><span class="tool-tag">Cinematic AI</span></div>
+          </div>
+        </div>
+        <div class="video-card">
+          <div class="video-embed">
+            <iframe src="https://www.youtube.com/embed/nZ63RruigcQ" allowfullscreen loading="lazy"></iframe>
+          </div>
+          <div class="video-info">
+            <span class="channel-badge">The Engineered Mind</span>
+            <h4>Why Smart People Still Lose Money</h4>
+            <p>A sharp cinematic short dissecting why intelligence alone doesn't guarantee business success. AI-generated environments, holographic data visualisations, and split-screen metaphors deliver a complete narrative arc within a compressed Shorts format.</p>
+            <div class="video-tools"><span class="tool-tag">AI Shorts</span><span class="tool-tag">Motion Graphics</span><span class="tool-tag">Voiceover</span><span class="tool-tag">Storytelling</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- YouTube: Modern Luxe Living -->
+    <div class="video-subsection fade-in">
+      <div class="video-subsection-title">Modern Luxe Living — YouTube Channel</div>
+      <div class="video-grid-2">
+        <div class="video-card">
+          <div class="video-embed">
+            <iframe src="https://www.youtube.com/embed/D1iXqJScIJI" allowfullscreen loading="lazy"></iframe>
+          </div>
+          <div class="video-info">
+            <span class="channel-badge">Modern Luxe Living</span>
+            <h4>Sand Turns Into a Galaxy Resin Wall Art</h4>
+            <p>A beautifully produced AI-narrated tutorial short showing the transformation of raw materials into a stunning galaxy wall art piece. Clean instructional content with precise scene sequencing and a satisfying cinematic before-and-after reveal.</p>
+            <div class="video-tools"><span class="tool-tag">AI Narration</span><span class="tool-tag">Tutorial Format</span><span class="tool-tag">Lifestyle</span><span class="tool-tag">TTS</span></div>
+          </div>
+        </div>
+        <div class="video-card">
+          <div class="video-embed">
+            <iframe src="https://www.youtube.com/embed/bcwvRuZs7FM" allowfullscreen loading="lazy"></iframe>
+          </div>
+          <div class="video-info">
+            <span class="channel-badge">Modern Luxe Living</span>
+            <h4>Panoramic Glass Bathroom vs Epoxy Spa Bathroom! Which Luxury Style Wins?</h4>
+            <p>A visually compelling split-format short placing two luxury bathroom transformations head-to-head. Visual-only storytelling with no voiceover — precise time-lapse pacing, jazz soundtrack, and cinematic reveal direction carry the full narrative.</p>
+            <div class="video-tools"><span class="tool-tag">Time-Lapse</span><span class="tool-tag">Interior Design</span><span class="tool-tag">Visual Storytelling</span><span class="tool-tag">Lifestyle</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- UGC ADS -->
+    <div class="video-subsection fade-in">
+      <div class="video-subsection-title">UGC Ads</div>
+      <div class="video-grid-3">
+        <div class="video-card">
+          <div class="video-embed-vertical">
+            <iframe src="https://player.vimeo.com/video/1182062364" allowfullscreen loading="lazy"></iframe>
+          </div>
+          <div class="video-info">
+            <h4>Adsage Global — AI Character Reveal</h4>
+            <p>A hyper-realistic AI-generated UGC video that passes as completely human until the talent reveals the twist. Seamless bedroom environment, natural lighting, and convincing character presence demonstrate the current frontier of AI video realism.</p>
+            <div class="video-tools"><span class="tool-tag">AI Human</span><span class="tool-tag">UGC Format</span><span class="tool-tag">Brand Identity</span><span class="tool-tag">Adsage Global</span></div>
+          </div>
+        </div>
+        <div class="video-card">
+          <div class="video-embed-vertical">
+            <iframe src="https://player.vimeo.com/video/1181964391" allowfullscreen loading="lazy"></iframe>
+          </div>
+          <div class="video-info">
+            <h4>Skincare Serum — Skeptic to Believer</h4>
+            <p>A natural, single-shot UGC skincare ad built around the classic doubt-to-discovery narrative arc. Authentic hesitation, thoughtful pause, and warm product reveal — all within under 10 seconds of scroll-stopping vertical content.</p>
+            <div class="video-tools"><span class="tool-tag">Skincare</span><span class="tool-tag">UGC Ad</span><span class="tool-tag">Single Shot</span><span class="tool-tag">Vertical</span></div>
+          </div>
+        </div>
+        <div class="video-card">
+          <div class="video-embed-vertical">
+            <iframe src="https://player.vimeo.com/video/1181964311" allowfullscreen loading="lazy"></iframe>
+          </div>
+          <div class="video-info">
+            <h4>Daily Greens — The Energy Secret</h4>
+            <p>A high-energy, relatable UGC ad for a greens supplement built on the "friend revealing a secret" format. Expressive transitions from exhausted to enthusiastic create immediate viewer connection and authentic product endorsement.</p>
+            <div class="video-tools"><span class="tool-tag">Health & Wellness</span><span class="tool-tag">UGC Ad</span><span class="tool-tag">Character Direction</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- COMMERCIAL ADS -->
+    <div class="video-subsection fade-in">
+      <div class="video-subsection-title">Commercial Ads</div>
+      <div class="video-grid-2">
+        <div class="video-card">
+          <div class="video-embed-vertical">
+            <iframe src="https://player.vimeo.com/video/1181963589" allowfullscreen loading="lazy"></iframe>
+          </div>
+          <div class="video-info">
+            <h4>Aroma Pro — Start Your Perfect Day</h4>
+            <p>A sleek, atmosphere-driven product commercial for Aroma Pro espresso machine built around the sensory ritual of a perfect morning. Voiceover integration, lifestyle character direction, latte art macro photography, and branded lower-third graphics — all within an 8-second format.</p>
+            <div class="video-tools"><span class="tool-tag">Product Commercial</span><span class="tool-tag">Lifestyle</span><span class="tool-tag">Voiceover</span><span class="tool-tag">Macro Shot</span></div>
+          </div>
+        </div>
+        <div class="video-card">
+          <div class="video-embed-vertical">
+            <iframe src="https://player.vimeo.com/video/1181962612" allowfullscreen loading="lazy"></iframe>
+          </div>
+          <div class="video-info">
+            <h4>Fintech Platform — There's a Version of You That Doesn't Have to Wait</h4>
+            <p>A punchy, confident fintech brand commercial built around a single powerful proposition — speed, convenience, and financial control from one place. Strong brand voice copywriting and aspirational positioning for a modern, mobile-first audience.</p>
+            <div class="video-tools"><span class="tool-tag">Fintech</span><span class="tool-tag">Brand Commercial</span><span class="tool-tag">Copywriting</span><span class="tool-tag">Aspirational</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- IMAGE GALLERY -->
+<section id="images">
+  <div class="section-wrap">
+    <div class="section-label">03 — Image Generation</div>
+    <h2 class="section-title">AI Image <em>Synthesis</em></h2>
+    <p class="section-sub">Prompt-driven image creation across 8 platforms — from photorealistic brand visuals and fashion portraits to architectural renders, data visualisations, and fantasy concept art.</p>
+
+    <div class="gallery-filter fade-in">
+      <button class="filter-btn active" onclick="filterGallery('all', this)">All</button>
+      <button class="filter-btn" onclick="filterGallery('portrait', this)">Portraits & Lifestyle</button>
+      <button class="filter-btn" onclick="filterGallery('product', this)">Product & Commercial</button>
+      <button class="filter-btn" onclick="filterGallery('architecture', this)">Architecture</button>
+      <button class="filter-btn" onclick="filterGallery('data', this)">Data & Infographics</button>
+      <button class="filter-btn" onclick="filterGallery('concept', this)">Concept Art</button>
+    </div>
+
+    <div class="gallery-grid fade-in" id="galleryGrid">
+
+      <!-- PORTRAITS & LIFESTYLE -->
+      <div class="gallery-item" data-cat="portrait" onclick="openLightbox(this)">
+        <img src="/mnt/user-data/uploads/Woman_in_red_sequin_gown.png" alt="Scarlet Gala" loading="lazy"/>
+        <div class="gallery-overlay"><div class="cat-tag">Portrait & Lifestyle</div><h5>Scarlet Gala</h5><p>Luxury fashion portrait in opulent hotel ballroom — chandelier lighting, red sequin gown, exceptional character presence.</p></div>
+      </div>
+      <div class="gallery-item" data-cat="portrait" onclick="openLightbox(this)">
+        <img src="/mnt/user-data/uploads/white_blazer_man.png" alt="The Director" loading="lazy"/>
+        <div class="gallery-overlay"><div class="cat-tag">Portrait & Lifestyle</div><h5>The Director</h5><p>Commanding seated portrait — ivory blazer, single dramatic spotlight, high-fashion editorial power aesthetic.</p></div>
+      </div>
+      <div class="gallery-item" data-cat="portrait" onclick="openLightbox(this)">
+        <img src="/mnt/user-data/uploads/Man_in_tuxedo.png" alt="The Grand Hall" loading="lazy"/>
+        <div class="gallery-overlay"><div class="cat-tag">Portrait & Lifestyle</div><h5>The Grand Hall</h5><p>Full-body luxury menswear portrait in a marble-columned grand hall with warm chandelier ambiance.</p></div>
+      </div>
+      <div class="gallery-item" data-cat="portrait" onclick="openLightbox(this)">
+        <img src="/mnt/user-data/uploads/Woman_standing_with_hands_on_hips.png" alt="Power Stance" loading="lazy"/>
+        <div class="gallery-overlay"><div class="cat-tag">Portrait & Lifestyle</div><h5>Power Stance</h5><p>Commanding studio fashion portrait — tailored navy suit, cinematic dark background, strong presence and lighting control.</p></div>
+      </div>
+      <div class="gallery-item" data-cat="portrait" onclick="openLightbox(this)">
+        <img src="/mnt/user-data/uploads/Man_striding_on_city_street.png" alt="The Coat" loading="lazy"/>
+        <div class="gallery-overlay"><div class="cat-tag">Portrait & Lifestyle</div><h5>The Coat</h5><p>Cinematic street portrait — silver-bearded man striding through rain-slicked London streets in a flowing overcoat.</p></div>
+      </div>
+      <div class="gallery-item" data-cat="portrait" onclick="openLightbox(this)">
+        <img src="/mnt/user-data/uploads/An_absolutely_stunning_202604101136.png" alt="Golden Hour" loading="lazy"/>
+        <div class="gallery-overlay"><div class="cat-tag">Portrait & Lifestyle</div><h5>Golden Hour</h5><p>Joyful beach lifestyle portrait — flowing white dress at ocean's edge during golden hour sunset. Travel/fashion campaign aesthetic.</p></div>
+      </div>
+      <div class="gallery-item" data-cat="portrait" onclick="openLightbox(this)">
+        <img src="/mnt/user-data/uploads/Man_in_Combat_Stance.png" alt="Neon Fighter" loading="lazy"/>
+        <div class="gallery-overlay"><div class="cat-tag">Portrait & Lifestyle</div><h5>Neon Fighter</h5><p>High-energy urban action portrait — combat stance in a neon-lit rain-soaked alley. Dynamic composition and vivid atmosphere.</p></div>
+      </div>
+      <div class="gallery-item" data-cat="portrait" onclick="openLightbox(this)">
+        <img src="/mnt/user-data/uploads/Man_in_Tactical_Jacket_Standing.png" alt="Urban Guardian" loading="lazy"/>
+        <div class="gallery-overlay"><div class="cat-tag">Portrait & Lifestyle</div><h5>Urban Guardian</h5><p>Cinematic tactical portrait — arms crossed in a dramatically lit dark alley. Moody atmospheric lighting and strong composition.</p></div>
+      </div>
+      <div class="gallery-item" data-cat="portrait" onclick="openLightbox(this)">
+        <img src="/mnt/user-data/uploads/Man_crouching_in_tactical_gear.png" alt="Night Operative" loading="lazy"/>
+        <div class="gallery-overlay"><div class="cat-tag">Portrait & Lifestyle</div><h5>Night Operative</h5><p>Night-vision toned tactical character in a war-torn environment. Cinematic green grading and photorealistic detail.</p></div>
+      </div>
+      <div class="gallery-item" data-cat="portrait" onclick="openLightbox(this)">
+        <img src="/mnt/user-data/uploads/Man_sitting_on_Staircase_.png" alt="Lost in Transit" loading="lazy"/>
+        <div class="gallery-overlay"><div class="cat-tag">Portrait & Lifestyle</div><h5>Lost in Transit</h5><p>Warm, natural-light UGC lifestyle portrait — young man relaxed on wooden staircase. Authentic streetwear brand aesthetic.</p></div>
+      </div>
+      <div class="gallery-item" data-cat="portrait" onclick="openLightbox(this)">
+        <img src="/mnt/user-data/uploads/Young_woman_leaning_against_graffiti_wall.png" alt="Street Culture" loading="lazy"/>
+        <div class="gallery-overlay"><div class="cat-tag">Portrait & Lifestyle</div><h5>Street Culture</h5><p>Authentic street portrait against a vibrant graffiti wall at golden hour. Natural depth of field, ideal for UGC and streetwear brands.</p></div>
+      </div>
+      <div class="gallery-item" data-cat="portrait" onclick="openLightbox(this)">
+        <img src="/mnt/user-data/uploads/A_young_woman_holding_book.png" alt="The Whispering Forest" loading="lazy"/>
+        <div class="gallery-overlay"><div class="cat-tag">Portrait & Lifestyle</div><h5>The Whispering Forest</h5><p>Soft editorial portrait in a sunlit wooden library. Dreamy, organic aesthetic with beautiful natural light rendering.</p></div>
+      </div>
+      <div class="gallery-item" data-cat="portrait" onclick="openLightbox(this)">
+        <img src="/mnt/user-data/uploads/Woman_in_casual.png" alt="Activewear Studio" loading="lazy"/>
+        <div class="gallery-overlay"><div class="cat-tag">Portrait & Lifestyle</div><h5>Activewear Studio</h5><p>Clean studio activewear portrait — professional fashion product shoot aesthetic with natural smile and polished presentation.</p></div>
+      </div>
+      <div class="gallery-item" data-cat="portrait" onclick="openLightbox(this)">
+        <img src="/mnt/user-data/uploads/A_athletic_woman.png" alt="Full Stride" loading="lazy"/>
+        <div class="gallery-overlay"><div class="cat-tag">Portrait & Lifestyle</div><h5>Full Stride</h5><p>High-energy action shot of a female sprinter on a competition track — motion blur, muscle definition, outstanding sports photography realism.</p></div>
+      </div>
+      <div class="gallery-item" data-cat="portrait" onclick="openLightbox(this)">
+        <img src="/mnt/user-data/uploads/A_person_at_different_ages.png" alt="A Life in Frames" loading="lazy"/>
+        <div class="gallery-overlay"><div class="cat-tag">Portrait & Lifestyle</div><h5>A Life in Frames</h5><p>AI age progression series showing consistent character identity across six stages of life — from childhood through old age.</p></div>
+      </div>
+
+      <!-- PRODUCT & COMMERCIAL -->
+      <div class="gallery-item" data-cat="product" onclick="openLightbox(this)">
+        <img src="/mnt/user-data/uploads/Velosport_AD2.png" alt="Velosport AeroCushion" loading="lazy"/>
+        <div class="gallery-overlay"><div class="cat-tag">Product & Commercial</div><h5>Velosport AeroCushion</h5><p>Premium lifestyle product shot with mountain backdrop and bicycle wheel — clean outdoor sports brand commercial aesthetic.</p></div>
+      </div>
+      <div class="gallery-item" data-cat="product" onclick="openLightbox(this)">
+        <img src="/mnt/user-data/uploads/Velosport_AD.png" alt="Velosport Logo Macro" loading="lazy"/>
+        <div class="gallery-overlay"><div class="cat-tag">Product & Commercial</div><h5>Velosport — Detail Macro</h5><p>Extreme close-up macro shot of VS logo on suede — showcasing material texture, stitching, and brand identity at premium level.</p></div>
+      </div>
+      <div class="gallery-item" data-cat="product" onclick="openLightbox(this)">
+        <img src="/mnt/user-data/uploads/Nike_shoe2.png" alt="Nike Air Max 1 Dark Edition" loading="lazy"/>
+        <div class="gallery-overlay"><div class="cat-tag">Product & Commercial</div><h5>Nike Air Max 1 — Dark Edition</h5><p>High-contrast studio product shot of Nike Air Max 1 in all-black colourway against a dramatic dark background.</p></div>
+      </div>
+      <div class="gallery-item" data-cat="product" onclick="openLightbox(this)">
+        <img src="/mnt/user-data/uploads/Nike_shoe.png" alt="Nike Air Max 90" loading="lazy"/>
+        <div class="gallery-overlay"><div class="cat-tag">Product & Commercial</div><h5>Nike Air Max 90 — Premium Dark Studio</h5><p>Cinematic dark-background product visual showcasing texture detail and shadow depth at commercial standard.</p></div>
+      </div>
+      <div class="gallery-item" data-cat="product" onclick="openLightbox(this)">
+        <img src="/mnt/user-data/uploads/Aroma_Pro-Espresso_Coffee_Pouring_Machine.png" alt="Aroma Pro" loading="lazy"/>
+        <div class="gallery-overlay"><div class="cat-tag">Product & Commercial</div><h5>Aroma Pro — Product Commercial Visual</h5><p>Photorealistic lifestyle product shot — espresso pouring on a marble kitchen counter. Clean, premium, commercial-grade visual.</p></div>
+      </div>
+      <div class="gallery-item" data-cat="product" onclick="openLightbox(this)">
+        <img src="/mnt/user-data/uploads/Gym_Place_it_on.png" alt="Hydrate Fitness Co." loading="lazy"/>
+        <div class="gallery-overlay"><div class="cat-tag">Product & Commercial</div><h5>Hydrate Fitness Co. — Product Placement</h5><p>Lifestyle gym scene with branded water bottle as hero product — natural depth of field and active background.</p></div>
+      </div>
+      <div class="gallery-item" data-cat="product" onclick="openLightbox(this)">
+        <img src="/mnt/user-data/uploads/Phone_AD3.png" alt="Nothing Phone Campaign Storyboard" loading="lazy"/>
+        <div class="gallery-overlay"><div class="cat-tag">Product & Commercial</div><h5>Nothing Phone Pro — Campaign Storyboard</h5><p>Full commercial ad storyboard for Nothing Phone Pro featuring 6 cinematic scenes from dramatic product reveal to lifestyle shots.</p></div>
+      </div>
+      <div class="gallery-item" data-cat="product" onclick="openLightbox(this)">
+        <img src="/mnt/user-data/uploads/Phone_AD4.png" alt="Nothing Phone Final Campaign" loading="lazy"/>
+        <div class="gallery-overlay"><div class="cat-tag">Product & Commercial</div><h5>Nothing Phone Pro — Final Campaign Scenes</h5><p>Six-scene polished commercial campaign covering glyph interface, camera system, ecosystem, and craftsmanship with CTA frame.</p></div>
+      </div>
+      <div class="gallery-item" data-cat="product" onclick="openLightbox(this)">
+        <img src="/mnt/user-data/uploads/Prime_AD_male.png" alt="Prime Recharge Male Campaign" loading="lazy"/>
+        <div class="gallery-overlay"><div class="cat-tag">Product & Commercial</div><h5>Prime Recharge — Male Athlete Campaign</h5><p>Six-scene AI commercial for Prime Hydration — athlete's journey from preparation to explosive performance. High-energy sports ad format.</p></div>
+      </div>
+      <div class="gallery-item" data-cat="product" onclick="openLightbox(this)">
+        <img src="/mnt/user-data/uploads/Prime_AD_female.png" alt="Prime Ignite Your Day Female Campaign" loading="lazy"/>
+        <div class="gallery-overlay"><div class="cat-tag">Product & Commercial</div><h5>Prime: Ignite Your Day — Female Campaign</h5><p>Nine-scene lifestyle commercial featuring a female protagonist across running, working, and social settings. Demonstrates character consistency.</p></div>
+      </div>
+      <div class="gallery-item" data-cat="product" onclick="openLightbox(this)">
+        <img src="/mnt/user-data/uploads/Sketch_AD.png" alt="Prime Sketch Storyboard" loading="lazy"/>
+        <div class="gallery-overlay"><div class="cat-tag">Product & Commercial</div><h5>Prime Hydration — Hand-Drawn Ad Storyboard</h5><p>Six-frame sketch storyboard for a Prime commercial — from exhaustion to discovery to peak performance. Full narrative pre-production structure.</p></div>
+      </div>
+      <div class="gallery-item" data-cat="product" onclick="openLightbox(this)">
+        <img src="/mnt/user-data/uploads/Website_AD.png" alt="Website Redesign Ad" loading="lazy"/>
+        <div class="gallery-overlay"><div class="cat-tag">Product & Commercial</div><h5>Website Redesign Ad — Retro Collage Style</h5><p>Bold retro-collage digital ad combining vintage black-and-white character with modern UI elements and teal typography.</p></div>
+      </div>
+      <div class="gallery-item" data-cat="product" onclick="openLightbox(this)">
+        <img src="/mnt/user-data/uploads/Confidencial.png" alt="Confidencial Poster" loading="lazy"/>
+        <div class="gallery-overlay"><div class="cat-tag">Product & Commercial</div><h5>Confidencial — Retro Brutalist Poster Art</h5><p>Bold typographic poster in red, black, and cream — retro-surrealist character with TV-head figure and distressed textures.</p></div>
+      </div>
+      <div class="gallery-item" data-cat="product" onclick="openLightbox(this)">
+        <img src="/mnt/user-data/uploads/A_Gritty.png" alt="Fractured Editorial Portrait" loading="lazy"/>
+        <div class="gallery-overlay"><div class="cat-tag">Product & Commercial</div><h5>Fractured — Gritty Editorial Portrait</h5><p>High-impact editorial composite — black-and-white portrait torn through bold red and black typographic layers. Raw and cinematic.</p></div>
+      </div>
+
+      <!-- ARCHITECTURE -->
+      <div class="gallery-item" data-cat="architecture" onclick="openLightbox(this)">
+        <img src="/mnt/user-data/uploads/House_Exterior.png" alt="Luxury Estate Exterior" loading="lazy"/>
+        <div class="gallery-overlay"><div class="cat-tag">Architecture</div><h5>Luxury Estate — AI Photorealistic Exterior</h5><p>Photorealistic render of a large-scale luxury estate with stone and wood facade, floor-to-ceiling windows, and landscaped grounds.</p></div>
+      </div>
+      <div class="gallery-item" data-cat="architecture" onclick="openLightbox(this)">
+        <img src="/mnt/user-data/uploads/House_Views_Floor_Plan.png" alt="Contemporary Home Multi-View" loading="lazy"/>
+        <div class="gallery-overlay"><div class="cat-tag">Architecture</div><h5>Contemporary Home — Full Exterior Render Suite</h5><p>Four-perspective render of a contemporary grey and wood-clad home with pool — front, side, back, and aerial views.</p></div>
+      </div>
+      <div class="gallery-item" data-cat="architecture" onclick="openLightbox(this)">
+        <img src="/mnt/user-data/uploads/House_Views_Floor_Plan2.png" alt="Modern Prairie Home" loading="lazy"/>
+        <div class="gallery-overlay"><div class="cat-tag">Architecture</div><h5>Modern Prairie Home — Multi-View AI Render</h5><p>Four-angle architectural render including front, side, back, and bird's-eye views of a modern prairie-style home.</p></div>
+      </div>
+      <div class="gallery-item" data-cat="architecture" onclick="openLightbox(this)">
+        <img src="/mnt/user-data/uploads/Realistic_Interior_House_Shots.png" alt="Modern Home Interior" loading="lazy"/>
+        <div class="gallery-overlay"><div class="cat-tag">Architecture</div><h5>Modern Home Interior — Four-Room Render Suite</h5><p>Photorealistic four-panel interior render — kitchen, living room, master bedroom, and marble luxury bathroom.</p></div>
+      </div>
+      <div class="gallery-item" data-cat="architecture" onclick="openLightbox(this)">
+        <img src="/mnt/user-data/uploads/2D_Floor_plan_apertment2.png" alt="2-Bed 2-Bath Floor Plan" loading="lazy"/>
+        <div class="gallery-overlay"><div class="cat-tag">Architecture</div><h5>2-Bed 2-Bath Apartment — Detailed Floor Plan</h5><p>Precise architectural 2D floor plan for a 98m² apartment with full room labelling, dimensions, and furniture layout.</p></div>
+      </div>
+      <div class="gallery-item" data-cat="architecture" onclick="openLightbox(this)">
+        <img src="/mnt/user-data/uploads/2D_Floor_plan_apertment.png" alt="Apartment Unit Floor Plan" loading="lazy"/>
+        <div class="gallery-overlay"><div class="cat-tag">Architecture</div><h5>Apartment Unit 301 — Technical Floor Plan</h5><p>Clean technical floor plan at 1:75 scale for a 105m² apartment featuring living/dining, kitchen, two bedrooms, and utility room.</p></div>
+      </div>
+      <div class="gallery-item" data-cat="architecture" onclick="openLightbox(this)">
+        <img src="/mnt/user-data/uploads/The_road.png" alt="Tower Bridge London" loading="lazy"/>
+        <div class="gallery-overlay"><div class="cat-tag">Architecture</div><h5>Tower Bridge, London — AI Urban Scene</h5><p>Photorealistic AI-generated street scene at Tower Bridge — red double-decker bus, pedestrians, and precise architectural detail.</p></div>
+      </div>
+
+      <!-- DATA & INFOGRAPHICS -->
+      <div class="gallery-item" data-cat="data" onclick="openLightbox(this)">
+        <img src="/mnt/user-data/uploads/Understanding_Hydration.png" alt="Prime Hydration Infographic" loading="lazy"/>
+        <div class="gallery-overlay"><div class="cat-tag">Data & Infographics</div><h5>Prime Hydration — Brand Infographic</h5><p>Comprehensive educational infographic on hydration science and Prime's product benefits — body diagram, fluid balance chart, and electrolyte breakdown.</p></div>
+      </div>
+      <div class="gallery-item" data-cat="data" onclick="openLightbox(this)">
+        <img src="/mnt/user-data/uploads/Understanding_Hydration_9_16.png" alt="Prime Hydration Portrait Infographic" loading="lazy"/>
+        <div class="gallery-overlay"><div class="cat-tag">Data & Infographics</div><h5>Prime Hydration — Portrait Format Infographic</h5><p>9:16 portrait version of the hydration infographic — optimised for mobile, social stories, and vertical display.</p></div>
+      </div>
+      <div class="gallery-item" data-cat="data" onclick="openLightbox(this)">
+        <img src="/mnt/user-data/uploads/Ultimate_Jazzy_Burger_flowchart.png" alt="Jazzy Burger Flowchart" loading="lazy"/>
+        <div class="gallery-overlay"><div class="cat-tag">Data & Infographics</div><h5>The Ultimate Jazzy Burger — Creative Flowchart</h5><p>Wildly creative illustrated flowchart — AI-assisted infographic and visual storytelling at its most entertaining and technically detailed.</p></div>
+      </div>
+      <div class="gallery-item" data-cat="data" onclick="openLightbox(this)">
+        <img src="/mnt/user-data/uploads/Favourite_Icecream_Flavour.png" alt="Ice Cream Survey Chart" loading="lazy"/>
+        <div class="gallery-overlay"><div class="cat-tag">Data & Infographics</div><h5>Favourite Ice Cream Flavours — Survey Chart</h5><p>Playful illustrated bar chart visualising survey data — clean data design with decorative elements and strong visual hierarchy.</p></div>
+      </div>
+      <div class="gallery-item" data-cat="data" onclick="openLightbox(this)">
+        <img src="/mnt/user-data/uploads/Apple_Color_Distribution.png" alt="Apple Color Distribution Chart" loading="lazy"/>
+        <div class="gallery-overlay"><div class="cat-tag">Data & Infographics</div><h5>Apple Colour Distribution — Styled Data Chart</h5><p>Contextually styled bar chart with warm kitchen background and emoji-enhanced visual design — data storytelling with personality.</p></div>
+      </div>
+
+      <!-- CONCEPT ART -->
+      <div class="gallery-item" data-cat="concept" onclick="openLightbox(this)">
+        <img src="/mnt/user-data/uploads/Woman_with_sword_battle_stance.png" alt="Storm Warrior Fantasy Scene" loading="lazy"/>
+        <div class="gallery-overlay"><div class="cat-tag">Concept Art</div><h5>Storm Warrior — AI Fantasy Battle Scene</h5><p>Epic fantasy battle scene — female warrior in ornate armour raising a sword against a stormy lightning-lit mountain landscape.</p></div>
+      </div>
+      <div class="gallery-item" data-cat="concept" onclick="openLightbox(this)">
+        <img src="/mnt/user-data/uploads/Create_a_high-end__202604071439.png" alt="Sci-Fi Command Centre" loading="lazy"/>
+        <div class="gallery-overlay"><div class="cat-tag">Concept Art</div><h5>Sci-Fi Command Centre — AI Environment Concept</h5><p>Atmospheric futuristic interior — holographic interface panels, teal and amber lighting, and deep cinematic perspective.</p></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- AUDIO -->
+<section id="audio">
+  <div class="section-wrap">
+    <div class="section-label">04 — Audio & Voiceover</div>
+    <h2 class="section-title">AI Audio &amp; <em>Voice</em> Production</h2>
+    <p class="section-sub">Multilingual voiceover, narration, and AI music production across 7 platforms — from natural conversational voices to custom voice cloning for brand consistency.</p>
+    <div class="audio-grid fade-in">
+      <div class="audio-intro">
+        <p>I produce professional voiceover and narrated audio content using a multi-tool approach — ElevenLabs for high-quality natural voices, Chatterbox for MIT-licensed voice cloning from 5-second references across 23 languages, Crick for access to 317 voices across 91 languages, and Kokoro TTS for lightweight 9-language production. Beyond narration, I also produce original AI music and background scores using Suno and Udio. Audio samples coming soon — embed your SoundCloud players in the slots below.</p>
+      </div>
+      <div class="audio-card">
+        <h4>E-Learning Module Narration</h4>
+        <p>Professional narration sample for a structured e-learning module — clear, authoritative, and learner-centred voice direction.</p>
+        <div class="audio-placeholder"><p>↑ Embed SoundCloud player here</p></div>
+        <div class="audio-meta"><span class="audio-meta-item">Tool: <span>ElevenLabs</span></span><span class="audio-meta-item">Format: <span>Instructional</span></span></div>
+      </div>
+      <div class="audio-card">
+        <h4>Multilingual Voice Sample</h4>
+        <p>Cross-language narration demonstrating multilingual production capability — voice cloning and natural TTS across 23+ languages.</p>
+        <div class="audio-placeholder"><p>↑ Embed SoundCloud player here</p></div>
+        <div class="audio-meta"><span class="audio-meta-item">Tool: <span>Chatterbox / Crick</span></span><span class="audio-meta-item">Languages: <span>23+ available</span></span></div>
+      </div>
+      <div class="audio-card">
+        <h4>AI Music / Background Score</h4>
+        <p>Original AI-generated background music for content production — cinematic, brand, or atmospheric scores built to brief.</p>
+        <div class="audio-placeholder"><p>↑ Embed SoundCloud player here</p></div>
+        <div class="audio-meta"><span class="audio-meta-item">Tool: <span>Suno / Udio</span></span><span class="audio-meta-item">Format: <span>Original Score</span></span></div>
+      </div>
+      <div class="audio-card">
+        <h4>Podcast-Style Narration</h4>
+        <p>Long-form, conversational narration sample demonstrating range beyond short-form — engaging, warm, and naturally paced delivery.</p>
+        <div class="audio-placeholder"><p>↑ Embed SoundCloud player here</p></div>
+        <div class="audio-meta"><span class="audio-meta-item">Tool: <span>ElevenLabs</span></span><span class="audio-meta-item">Format: <span>Long-Form</span></span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- WRITING -->
+<section id="writing">
+  <div class="section-wrap">
+    <div class="section-label">05 — Writing & Content</div>
+    <h2 class="section-title">Content <em>Writing</em> &amp; SEO</h2>
+    <p class="section-sub">SEO-optimised articles, technical content, and structured writing for brand clients — combining AI-assisted research with strong editorial judgment and content transformation skills.</p>
+    <div class="writing-grid fade-in">
+      <div class="writing-card">
+        <div class="writing-type">SEO Article</div>
+        <h4>Add Your Best Article Title Here</h4>
+        <p>Brief description of the article — what it covers, who it's for, and the key insight it delivers. Replace this with your actual content piece summary.</p>
+        <div class="toolkit-tags"><span class="tag">SEO-Optimised</span><span class="tag">AI-Assisted</span><span class="tag">Brand Content</span></div>
+        <div class="placeholder-note">↑ Link to or paste full article here</div>
+      </div>
+      <div class="writing-card">
+        <div class="writing-type">Technical Content</div>
+        <h4>Add Your Second Content Piece Here</h4>
+        <p>Description of the second content piece — topic, audience, and purpose. This could be a how-to guide, explainer, or data-driven article.</p>
+        <div class="toolkit-tags"><span class="tag">Technical Writing</span><span class="tag">Data-Driven</span><span class="tag">AI Tools</span></div>
+        <div class="placeholder-note">↑ Link to or paste full article here</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-wrap">
+    <div class="contact-wrap fade-in">
+      <h3>Let's build something <em style="color:var(--amber)">together</em></h3>
+      <p>Whether it's a bold AI video production, a compelling multimedia project, a creative collaboration, or anything in between — if it involves pushing the boundaries of what AI can do, I'm interested. I work with clients and collaborators anywhere in the world.</p>
+      <div class="contact-links">
+        <a href="mailto:toyeoluwaseyi@gmail.com" class="contact-link"><div class="icon">✉</div>toyeoluwaseyi@gmail.com</a>
+        <a href="tel:+2348178291528" class="contact-link"><div class="icon">📞</div>(+234) 8178291528</a>
+        <a href="#" class="contact-link"><div class="icon">💼</div>LinkedIn Profile</a>
+      </div>
+      <a href="#video" class="btn-primary">▶ View My Work</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 <span>Oluwaseyi E. Toye</span> · AI Multimedia Producer & Creative Technologist</p>
+</footer>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+  <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+  <img id="lightboxImg" src="" alt=""/>
+</div>
+
+<script>
+// Scroll animations
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+}, { threshold: 0.08 });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+// Active nav
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-links a');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(s => { if (window.scrollY >= s.offsetTop - 130) current = s.getAttribute('id'); });
+  navLinks.forEach(l => { l.style.color = l.getAttribute('href') === `#${current}` ? 'var(--amber)' : ''; });
+});
+
+// Gallery filter
+function filterGallery(cat, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.gallery-item').forEach(item => {
+    if (cat === 'all' || item.dataset.cat === cat) {
+      item.style.display = 'block';
+    } else {
+      item.style.display = 'none';
+    }
+  });
+}
+
+// Lightbox
+function openLightbox(el) {
+  const img = el.querySelector('img');
+  document.getElementById('lightboxImg').src = img.src;
+  document.getElementById('lightboxImg').alt = img.alt;
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox(e) {
+  if (!e || e.target !== document.getElementById('lightboxImg')) {
+    document.getElementById('lightbox').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+</script>
+</body>
+</html>
